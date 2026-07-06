@@ -1,0 +1,2211 @@
+{
+  "metadata": {
+    "torneo": "Copa Mundial de la FIFA 2026",
+    "anfitriones": [
+      "Estados Unidos",
+      "México",
+      "Canadá"
+    ],
+    "fechaInicio": "2026-06-11",
+    "fechaFinal": "2026-07-19",
+    "totalSelecciones": 48,
+    "totalPartidosTorneo": 104,
+    "partidosIncluidosEnSeed": "Fase de grupos (72 partidos)",
+    "formato": "12 grupos de 4; clasifican a dieciseisavos los 2 primeros de cada grupo y los 8 mejores terceros",
+    "zonaHorariaReferencia": "Horas en UTC y en hora del Este (ET, UTC-4). Ecuador: UTC-5",
+    "version": "1.0",
+    "generadoPara": "Proyecto Integrador UTN GolMundial 2026",
+    "notas": "Datos verificados al 11 de junio de 2026. Los resultados deben ser registrados por el administrador conforme avance el torneo."
+  },
+  "configuracionUtnGolCoin": {
+    "nombreMoneda": "UTNGolCoin",
+    "simbolo": "UGC",
+    "bonoBienvenida": 10,
+    "bonoDiarioSaldoCero": 1,
+    "tipoPrediccion": "1X2",
+    "prediccionesPorPartidoPorUsuario": 1,
+    "cierreDePredicciones": "A la fechaHoraUtc de inicio del partido",
+    "cuotasPorDefectoSugeridas": {
+      "local": 1.8,
+      "empate": 3.0,
+      "visitante": 2.5
+    },
+    "advertencia": "Moneda exclusivamente ficticia y académica, sin valor monetario real"
+  },
+  "roles": [
+    {
+      "id": 1,
+      "nombre": "ADMINISTRADOR",
+      "descripcion": "Gestiona torneo, resultados, cuotas y usuarios"
+    },
+    {
+      "id": 2,
+      "nombre": "USUARIO",
+      "descripcion": "Consulta información y realiza predicciones con UTNGolCoin"
+    },
+    {
+      "id": 3,
+      "nombre": "INVITADO",
+      "descripcion": "Solo consulta calendario, estadísticas y posiciones"
+    }
+  ],
+  "usuariosIniciales": [
+    {
+      "id": 1,
+      "username": "admin",
+      "nombre": "Administrador del Torneo",
+      "rolId": 1,
+      "password": "CAMBIAR_EN_PRIMER_USO",
+      "nota": "La contraseña debe almacenarse con hash (BCrypt o equivalente); este valor es solo un marcador del seed"
+    }
+  ],
+  "fases": [
+    {
+      "codigo": "GRUPOS",
+      "nombre": "Fase de grupos",
+      "fechas": "2026-06-11 a 2026-06-27"
+    },
+    {
+      "codigo": "DIECISEISAVOS",
+      "nombre": "Dieciseisavos de final (Ronda de 32)",
+      "fechas": "2026-06-28 a 2026-07-03"
+    },
+    {
+      "codigo": "OCTAVOS",
+      "nombre": "Octavos de final",
+      "fechas": "2026-07-04 a 2026-07-07"
+    },
+    {
+      "codigo": "CUARTOS",
+      "nombre": "Cuartos de final",
+      "fechas": "2026-07-09 a 2026-07-11"
+    },
+    {
+      "codigo": "SEMIFINAL",
+      "nombre": "Semifinales",
+      "fechas": "2026-07-14 a 2026-07-15"
+    },
+    {
+      "codigo": "TERCER_PUESTO",
+      "nombre": "Tercer puesto",
+      "fechas": "2026-07-18"
+    },
+    {
+      "codigo": "FINAL",
+      "nombre": "Final (MetLife Stadium, Nueva Jersey)",
+      "fechas": "2026-07-19"
+    }
+  ],
+  "grupos": [
+    {
+      "codigo": "A",
+      "nombre": "Grupo A"
+    },
+    {
+      "codigo": "B",
+      "nombre": "Grupo B"
+    },
+    {
+      "codigo": "C",
+      "nombre": "Grupo C"
+    },
+    {
+      "codigo": "D",
+      "nombre": "Grupo D"
+    },
+    {
+      "codigo": "E",
+      "nombre": "Grupo E"
+    },
+    {
+      "codigo": "F",
+      "nombre": "Grupo F"
+    },
+    {
+      "codigo": "G",
+      "nombre": "Grupo G"
+    },
+    {
+      "codigo": "H",
+      "nombre": "Grupo H"
+    },
+    {
+      "codigo": "I",
+      "nombre": "Grupo I"
+    },
+    {
+      "codigo": "J",
+      "nombre": "Grupo J"
+    },
+    {
+      "codigo": "K",
+      "nombre": "Grupo K"
+    },
+    {
+      "codigo": "L",
+      "nombre": "Grupo L"
+    }
+  ],
+  "sedes": [
+    {
+      "id": 1,
+      "nombre": "Estadio Azteca (Estadio Ciudad de México)",
+      "ciudad": "Ciudad de México",
+      "pais": "México",
+      "capacidadAprox": 83000
+    },
+    {
+      "id": 2,
+      "nombre": "Estadio Akron (Estadio Guadalajara)",
+      "ciudad": "Zapopan",
+      "pais": "México",
+      "capacidadAprox": 48000
+    },
+    {
+      "id": 3,
+      "nombre": "Estadio BBVA (Estadio Monterrey)",
+      "ciudad": "Monterrey",
+      "pais": "México",
+      "capacidadAprox": 53500
+    },
+    {
+      "id": 4,
+      "nombre": "BMO Field (Toronto Stadium)",
+      "ciudad": "Toronto",
+      "pais": "Canadá",
+      "capacidadAprox": 45000
+    },
+    {
+      "id": 5,
+      "nombre": "BC Place (Vancouver Stadium)",
+      "ciudad": "Vancouver",
+      "pais": "Canadá",
+      "capacidadAprox": 54000
+    },
+    {
+      "id": 6,
+      "nombre": "MetLife Stadium (New York New Jersey Stadium)",
+      "ciudad": "East Rutherford",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 82500
+    },
+    {
+      "id": 7,
+      "nombre": "SoFi Stadium (Los Angeles Stadium)",
+      "ciudad": "Inglewood",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 70000
+    },
+    {
+      "id": 8,
+      "nombre": "AT&T Stadium (Dallas Stadium)",
+      "ciudad": "Arlington",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 80000
+    },
+    {
+      "id": 9,
+      "nombre": "Mercedes-Benz Stadium (Atlanta Stadium)",
+      "ciudad": "Atlanta",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 71000
+    },
+    {
+      "id": 10,
+      "nombre": "NRG Stadium (Houston Stadium)",
+      "ciudad": "Houston",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 72000
+    },
+    {
+      "id": 11,
+      "nombre": "Gillette Stadium (Boston Stadium)",
+      "ciudad": "Foxborough",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 65000
+    },
+    {
+      "id": 12,
+      "nombre": "Lincoln Financial Field (Philadelphia Stadium)",
+      "ciudad": "Filadelfia",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 69000
+    },
+    {
+      "id": 13,
+      "nombre": "Hard Rock Stadium (Miami Stadium)",
+      "ciudad": "Miami Gardens",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 65000
+    },
+    {
+      "id": 14,
+      "nombre": "Arrowhead Stadium (Kansas City Stadium)",
+      "ciudad": "Kansas City",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 76000
+    },
+    {
+      "id": 15,
+      "nombre": "Levi's Stadium (San Francisco Bay Area Stadium)",
+      "ciudad": "Santa Clara",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 68500
+    },
+    {
+      "id": 16,
+      "nombre": "Lumen Field (Seattle Stadium)",
+      "ciudad": "Seattle",
+      "pais": "Estados Unidos",
+      "capacidadAprox": 68000
+    }
+  ],
+  "selecciones": [
+    {
+      "id": 1,
+      "codigoFifa": "MEX",
+      "nombre": "México",
+      "grupo": "A",
+      "confederacion": "Concacaf",
+      "esAnfitrion": true,
+      "clasificacion": "Anfitrión"
+    },
+    {
+      "id": 2,
+      "codigoFifa": "KOR",
+      "nombre": "Corea del Sur",
+      "grupo": "A",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 3,
+      "codigoFifa": "RSA",
+      "nombre": "Sudáfrica",
+      "grupo": "A",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 4,
+      "codigoFifa": "CZE",
+      "nombre": "Chequia",
+      "grupo": "A",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Repechaje UEFA (Ruta D)"
+    },
+    {
+      "id": 5,
+      "codigoFifa": "CAN",
+      "nombre": "Canadá",
+      "grupo": "B",
+      "confederacion": "Concacaf",
+      "esAnfitrion": true,
+      "clasificacion": "Anfitrión"
+    },
+    {
+      "id": 6,
+      "codigoFifa": "BIH",
+      "nombre": "Bosnia y Herzegovina",
+      "grupo": "B",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Repechaje UEFA (Ruta A)"
+    },
+    {
+      "id": 7,
+      "codigoFifa": "QAT",
+      "nombre": "Catar",
+      "grupo": "B",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 8,
+      "codigoFifa": "SUI",
+      "nombre": "Suiza",
+      "grupo": "B",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 9,
+      "codigoFifa": "BRA",
+      "nombre": "Brasil",
+      "grupo": "C",
+      "confederacion": "CONMEBOL",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CONMEBOL"
+    },
+    {
+      "id": 10,
+      "codigoFifa": "MAR",
+      "nombre": "Marruecos",
+      "grupo": "C",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 11,
+      "codigoFifa": "HAI",
+      "nombre": "Haití",
+      "grupo": "C",
+      "confederacion": "Concacaf",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación Concacaf"
+    },
+    {
+      "id": 12,
+      "codigoFifa": "SCO",
+      "nombre": "Escocia",
+      "grupo": "C",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 13,
+      "codigoFifa": "USA",
+      "nombre": "Estados Unidos",
+      "grupo": "D",
+      "confederacion": "Concacaf",
+      "esAnfitrion": true,
+      "clasificacion": "Anfitrión"
+    },
+    {
+      "id": 14,
+      "codigoFifa": "AUS",
+      "nombre": "Australia",
+      "grupo": "D",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 15,
+      "codigoFifa": "PAR",
+      "nombre": "Paraguay",
+      "grupo": "D",
+      "confederacion": "CONMEBOL",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CONMEBOL"
+    },
+    {
+      "id": 16,
+      "codigoFifa": "TUR",
+      "nombre": "Turquía",
+      "grupo": "D",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Repechaje UEFA (Ruta C)"
+    },
+    {
+      "id": 17,
+      "codigoFifa": "GER",
+      "nombre": "Alemania",
+      "grupo": "E",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 18,
+      "codigoFifa": "ECU",
+      "nombre": "Ecuador",
+      "grupo": "E",
+      "confederacion": "CONMEBOL",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CONMEBOL"
+    },
+    {
+      "id": 19,
+      "codigoFifa": "CIV",
+      "nombre": "Costa de Marfil",
+      "grupo": "E",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 20,
+      "codigoFifa": "CUW",
+      "nombre": "Curazao",
+      "grupo": "E",
+      "confederacion": "Concacaf",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación Concacaf"
+    },
+    {
+      "id": 21,
+      "codigoFifa": "NED",
+      "nombre": "Países Bajos",
+      "grupo": "F",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 22,
+      "codigoFifa": "JPN",
+      "nombre": "Japón",
+      "grupo": "F",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 23,
+      "codigoFifa": "TUN",
+      "nombre": "Túnez",
+      "grupo": "F",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 24,
+      "codigoFifa": "SWE",
+      "nombre": "Suecia",
+      "grupo": "F",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Repechaje UEFA (Ruta B)"
+    },
+    {
+      "id": 25,
+      "codigoFifa": "BEL",
+      "nombre": "Bélgica",
+      "grupo": "G",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 26,
+      "codigoFifa": "IRN",
+      "nombre": "Irán",
+      "grupo": "G",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 27,
+      "codigoFifa": "EGY",
+      "nombre": "Egipto",
+      "grupo": "G",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 28,
+      "codigoFifa": "NZL",
+      "nombre": "Nueva Zelanda",
+      "grupo": "G",
+      "confederacion": "OFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación OFC"
+    },
+    {
+      "id": 29,
+      "codigoFifa": "ESP",
+      "nombre": "España",
+      "grupo": "H",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 30,
+      "codigoFifa": "URU",
+      "nombre": "Uruguay",
+      "grupo": "H",
+      "confederacion": "CONMEBOL",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CONMEBOL"
+    },
+    {
+      "id": 31,
+      "codigoFifa": "KSA",
+      "nombre": "Arabia Saudita",
+      "grupo": "H",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 32,
+      "codigoFifa": "CPV",
+      "nombre": "Cabo Verde",
+      "grupo": "H",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 33,
+      "codigoFifa": "FRA",
+      "nombre": "Francia",
+      "grupo": "I",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 34,
+      "codigoFifa": "SEN",
+      "nombre": "Senegal",
+      "grupo": "I",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 35,
+      "codigoFifa": "NOR",
+      "nombre": "Noruega",
+      "grupo": "I",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 36,
+      "codigoFifa": "IRQ",
+      "nombre": "Irak",
+      "grupo": "I",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Repechaje interconfederaciones"
+    },
+    {
+      "id": 37,
+      "codigoFifa": "ARG",
+      "nombre": "Argentina",
+      "grupo": "J",
+      "confederacion": "CONMEBOL",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CONMEBOL (campeón vigente)"
+    },
+    {
+      "id": 38,
+      "codigoFifa": "AUT",
+      "nombre": "Austria",
+      "grupo": "J",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 39,
+      "codigoFifa": "ALG",
+      "nombre": "Argelia",
+      "grupo": "J",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    },
+    {
+      "id": 40,
+      "codigoFifa": "JOR",
+      "nombre": "Jordania",
+      "grupo": "J",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 41,
+      "codigoFifa": "POR",
+      "nombre": "Portugal",
+      "grupo": "K",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 42,
+      "codigoFifa": "COL",
+      "nombre": "Colombia",
+      "grupo": "K",
+      "confederacion": "CONMEBOL",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CONMEBOL"
+    },
+    {
+      "id": 43,
+      "codigoFifa": "UZB",
+      "nombre": "Uzbekistán",
+      "grupo": "K",
+      "confederacion": "AFC",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación AFC"
+    },
+    {
+      "id": 44,
+      "codigoFifa": "COD",
+      "nombre": "RD Congo",
+      "grupo": "K",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Repechaje interconfederaciones"
+    },
+    {
+      "id": 45,
+      "codigoFifa": "ENG",
+      "nombre": "Inglaterra",
+      "grupo": "L",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 46,
+      "codigoFifa": "CRO",
+      "nombre": "Croacia",
+      "grupo": "L",
+      "confederacion": "UEFA",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación UEFA"
+    },
+    {
+      "id": 47,
+      "codigoFifa": "PAN",
+      "nombre": "Panamá",
+      "grupo": "L",
+      "confederacion": "Concacaf",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación Concacaf"
+    },
+    {
+      "id": 48,
+      "codigoFifa": "GHA",
+      "nombre": "Ghana",
+      "grupo": "L",
+      "confederacion": "CAF",
+      "esAnfitrion": false,
+      "clasificacion": "Clasificación CAF"
+    }
+  ],
+  "partidos": [
+    {
+      "id": 1,
+      "numeroPartidoFifa": 1,
+      "fase": "GRUPOS",
+      "grupo": "A",
+      "seleccionLocalId": 1,
+      "seleccionLocal": "MEX",
+      "seleccionVisitanteId": 3,
+      "seleccionVisitante": "RSA",
+      "fechaHoraUtc": "2026-06-11T19:00:00Z",
+      "fechaHoraEt": "2026-06-11T15:00:00-04:00",
+      "sedeId": 1,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 2,
+      "numeroPartidoFifa": 2,
+      "fase": "GRUPOS",
+      "grupo": "A",
+      "seleccionLocalId": 2,
+      "seleccionLocal": "KOR",
+      "seleccionVisitanteId": 4,
+      "seleccionVisitante": "CZE",
+      "fechaHoraUtc": "2026-06-12T02:00:00Z",
+      "fechaHoraEt": "2026-06-11T22:00:00-04:00",
+      "sedeId": 2,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 3,
+      "numeroPartidoFifa": 3,
+      "fase": "GRUPOS",
+      "grupo": "B",
+      "seleccionLocalId": 5,
+      "seleccionLocal": "CAN",
+      "seleccionVisitanteId": 6,
+      "seleccionVisitante": "BIH",
+      "fechaHoraUtc": "2026-06-12T19:00:00Z",
+      "fechaHoraEt": "2026-06-12T15:00:00-04:00",
+      "sedeId": 4,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 4,
+      "numeroPartidoFifa": 4,
+      "fase": "GRUPOS",
+      "grupo": "D",
+      "seleccionLocalId": 13,
+      "seleccionLocal": "USA",
+      "seleccionVisitanteId": 15,
+      "seleccionVisitante": "PAR",
+      "fechaHoraUtc": "2026-06-13T01:00:00Z",
+      "fechaHoraEt": "2026-06-12T21:00:00-04:00",
+      "sedeId": 7,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 5,
+      "numeroPartidoFifa": 5,
+      "fase": "GRUPOS",
+      "grupo": "B",
+      "seleccionLocalId": 7,
+      "seleccionLocal": "QAT",
+      "seleccionVisitanteId": 8,
+      "seleccionVisitante": "SUI",
+      "fechaHoraUtc": "2026-06-13T19:00:00Z",
+      "fechaHoraEt": "2026-06-13T15:00:00-04:00",
+      "sedeId": 15,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 6,
+      "numeroPartidoFifa": 6,
+      "fase": "GRUPOS",
+      "grupo": "C",
+      "seleccionLocalId": 9,
+      "seleccionLocal": "BRA",
+      "seleccionVisitanteId": 10,
+      "seleccionVisitante": "MAR",
+      "fechaHoraUtc": "2026-06-13T22:00:00Z",
+      "fechaHoraEt": "2026-06-13T18:00:00-04:00",
+      "sedeId": 6,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 7,
+      "numeroPartidoFifa": 7,
+      "fase": "GRUPOS",
+      "grupo": "C",
+      "seleccionLocalId": 11,
+      "seleccionLocal": "HAI",
+      "seleccionVisitanteId": 12,
+      "seleccionVisitante": "SCO",
+      "fechaHoraUtc": "2026-06-14T01:00:00Z",
+      "fechaHoraEt": "2026-06-13T21:00:00-04:00",
+      "sedeId": 11,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 8,
+      "numeroPartidoFifa": 8,
+      "fase": "GRUPOS",
+      "grupo": "D",
+      "seleccionLocalId": 14,
+      "seleccionLocal": "AUS",
+      "seleccionVisitanteId": 16,
+      "seleccionVisitante": "TUR",
+      "fechaHoraUtc": "2026-06-14T04:00:00Z",
+      "fechaHoraEt": "2026-06-14T00:00:00-04:00",
+      "sedeId": 5,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 9,
+      "numeroPartidoFifa": 9,
+      "fase": "GRUPOS",
+      "grupo": "E",
+      "seleccionLocalId": 17,
+      "seleccionLocal": "GER",
+      "seleccionVisitanteId": 20,
+      "seleccionVisitante": "CUW",
+      "fechaHoraUtc": "2026-06-14T17:00:00Z",
+      "fechaHoraEt": "2026-06-14T13:00:00-04:00",
+      "sedeId": 10,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 10,
+      "numeroPartidoFifa": 10,
+      "fase": "GRUPOS",
+      "grupo": "F",
+      "seleccionLocalId": 21,
+      "seleccionLocal": "NED",
+      "seleccionVisitanteId": 22,
+      "seleccionVisitante": "JPN",
+      "fechaHoraUtc": "2026-06-14T20:00:00Z",
+      "fechaHoraEt": "2026-06-14T16:00:00-04:00",
+      "sedeId": 8,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 11,
+      "numeroPartidoFifa": 11,
+      "fase": "GRUPOS",
+      "grupo": "E",
+      "seleccionLocalId": 19,
+      "seleccionLocal": "CIV",
+      "seleccionVisitanteId": 18,
+      "seleccionVisitante": "ECU",
+      "fechaHoraUtc": "2026-06-14T23:00:00Z",
+      "fechaHoraEt": "2026-06-14T19:00:00-04:00",
+      "sedeId": 12,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 12,
+      "numeroPartidoFifa": 12,
+      "fase": "GRUPOS",
+      "grupo": "F",
+      "seleccionLocalId": 24,
+      "seleccionLocal": "SWE",
+      "seleccionVisitanteId": 23,
+      "seleccionVisitante": "TUN",
+      "fechaHoraUtc": "2026-06-15T02:00:00Z",
+      "fechaHoraEt": "2026-06-14T22:00:00-04:00",
+      "sedeId": 3,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 13,
+      "numeroPartidoFifa": 13,
+      "fase": "GRUPOS",
+      "grupo": "H",
+      "seleccionLocalId": 29,
+      "seleccionLocal": "ESP",
+      "seleccionVisitanteId": 32,
+      "seleccionVisitante": "CPV",
+      "fechaHoraUtc": "2026-06-15T16:00:00Z",
+      "fechaHoraEt": "2026-06-15T12:00:00-04:00",
+      "sedeId": 9,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 14,
+      "numeroPartidoFifa": 14,
+      "fase": "GRUPOS",
+      "grupo": "G",
+      "seleccionLocalId": 25,
+      "seleccionLocal": "BEL",
+      "seleccionVisitanteId": 27,
+      "seleccionVisitante": "EGY",
+      "fechaHoraUtc": "2026-06-15T19:00:00Z",
+      "fechaHoraEt": "2026-06-15T15:00:00-04:00",
+      "sedeId": 16,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 15,
+      "numeroPartidoFifa": 15,
+      "fase": "GRUPOS",
+      "grupo": "H",
+      "seleccionLocalId": 31,
+      "seleccionLocal": "KSA",
+      "seleccionVisitanteId": 30,
+      "seleccionVisitante": "URU",
+      "fechaHoraUtc": "2026-06-15T22:00:00Z",
+      "fechaHoraEt": "2026-06-15T18:00:00-04:00",
+      "sedeId": 13,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 16,
+      "numeroPartidoFifa": 16,
+      "fase": "GRUPOS",
+      "grupo": "G",
+      "seleccionLocalId": 26,
+      "seleccionLocal": "IRN",
+      "seleccionVisitanteId": 28,
+      "seleccionVisitante": "NZL",
+      "fechaHoraUtc": "2026-06-16T01:00:00Z",
+      "fechaHoraEt": "2026-06-15T21:00:00-04:00",
+      "sedeId": 7,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 17,
+      "numeroPartidoFifa": 17,
+      "fase": "GRUPOS",
+      "grupo": "I",
+      "seleccionLocalId": 33,
+      "seleccionLocal": "FRA",
+      "seleccionVisitanteId": 34,
+      "seleccionVisitante": "SEN",
+      "fechaHoraUtc": "2026-06-16T19:00:00Z",
+      "fechaHoraEt": "2026-06-16T15:00:00-04:00",
+      "sedeId": 6,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 18,
+      "numeroPartidoFifa": 18,
+      "fase": "GRUPOS",
+      "grupo": "I",
+      "seleccionLocalId": 36,
+      "seleccionLocal": "IRQ",
+      "seleccionVisitanteId": 35,
+      "seleccionVisitante": "NOR",
+      "fechaHoraUtc": "2026-06-16T22:00:00Z",
+      "fechaHoraEt": "2026-06-16T18:00:00-04:00",
+      "sedeId": 11,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 19,
+      "numeroPartidoFifa": 19,
+      "fase": "GRUPOS",
+      "grupo": "J",
+      "seleccionLocalId": 37,
+      "seleccionLocal": "ARG",
+      "seleccionVisitanteId": 39,
+      "seleccionVisitante": "ALG",
+      "fechaHoraUtc": "2026-06-17T01:00:00Z",
+      "fechaHoraEt": "2026-06-16T21:00:00-04:00",
+      "sedeId": 14,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 20,
+      "numeroPartidoFifa": 20,
+      "fase": "GRUPOS",
+      "grupo": "J",
+      "seleccionLocalId": 38,
+      "seleccionLocal": "AUT",
+      "seleccionVisitanteId": 40,
+      "seleccionVisitante": "JOR",
+      "fechaHoraUtc": "2026-06-17T04:00:00Z",
+      "fechaHoraEt": "2026-06-17T00:00:00-04:00",
+      "sedeId": 15,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 21,
+      "numeroPartidoFifa": 21,
+      "fase": "GRUPOS",
+      "grupo": "K",
+      "seleccionLocalId": 41,
+      "seleccionLocal": "POR",
+      "seleccionVisitanteId": 44,
+      "seleccionVisitante": "COD",
+      "fechaHoraUtc": "2026-06-17T17:00:00Z",
+      "fechaHoraEt": "2026-06-17T13:00:00-04:00",
+      "sedeId": 10,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 22,
+      "numeroPartidoFifa": 22,
+      "fase": "GRUPOS",
+      "grupo": "L",
+      "seleccionLocalId": 45,
+      "seleccionLocal": "ENG",
+      "seleccionVisitanteId": 46,
+      "seleccionVisitante": "CRO",
+      "fechaHoraUtc": "2026-06-17T20:00:00Z",
+      "fechaHoraEt": "2026-06-17T16:00:00-04:00",
+      "sedeId": 8,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 23,
+      "numeroPartidoFifa": 23,
+      "fase": "GRUPOS",
+      "grupo": "L",
+      "seleccionLocalId": 48,
+      "seleccionLocal": "GHA",
+      "seleccionVisitanteId": 47,
+      "seleccionVisitante": "PAN",
+      "fechaHoraUtc": "2026-06-17T23:00:00Z",
+      "fechaHoraEt": "2026-06-17T19:00:00-04:00",
+      "sedeId": 4,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 24,
+      "numeroPartidoFifa": 24,
+      "fase": "GRUPOS",
+      "grupo": "K",
+      "seleccionLocalId": 43,
+      "seleccionLocal": "UZB",
+      "seleccionVisitanteId": 42,
+      "seleccionVisitante": "COL",
+      "fechaHoraUtc": "2026-06-18T02:00:00Z",
+      "fechaHoraEt": "2026-06-17T22:00:00-04:00",
+      "sedeId": 1,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 25,
+      "numeroPartidoFifa": 25,
+      "fase": "GRUPOS",
+      "grupo": "A",
+      "seleccionLocalId": 4,
+      "seleccionLocal": "CZE",
+      "seleccionVisitanteId": 3,
+      "seleccionVisitante": "RSA",
+      "fechaHoraUtc": "2026-06-18T16:00:00Z",
+      "fechaHoraEt": "2026-06-18T12:00:00-04:00",
+      "sedeId": 9,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 26,
+      "numeroPartidoFifa": 26,
+      "fase": "GRUPOS",
+      "grupo": "B",
+      "seleccionLocalId": 8,
+      "seleccionLocal": "SUI",
+      "seleccionVisitanteId": 6,
+      "seleccionVisitante": "BIH",
+      "fechaHoraUtc": "2026-06-18T19:00:00Z",
+      "fechaHoraEt": "2026-06-18T15:00:00-04:00",
+      "sedeId": 7,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 27,
+      "numeroPartidoFifa": 27,
+      "fase": "GRUPOS",
+      "grupo": "B",
+      "seleccionLocalId": 5,
+      "seleccionLocal": "CAN",
+      "seleccionVisitanteId": 7,
+      "seleccionVisitante": "QAT",
+      "fechaHoraUtc": "2026-06-18T22:00:00Z",
+      "fechaHoraEt": "2026-06-18T18:00:00-04:00",
+      "sedeId": 5,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 28,
+      "numeroPartidoFifa": 28,
+      "fase": "GRUPOS",
+      "grupo": "A",
+      "seleccionLocalId": 1,
+      "seleccionLocal": "MEX",
+      "seleccionVisitanteId": 2,
+      "seleccionVisitante": "KOR",
+      "fechaHoraUtc": "2026-06-19T01:00:00Z",
+      "fechaHoraEt": "2026-06-18T21:00:00-04:00",
+      "sedeId": 2,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 29,
+      "numeroPartidoFifa": 29,
+      "fase": "GRUPOS",
+      "grupo": "D",
+      "seleccionLocalId": 13,
+      "seleccionLocal": "USA",
+      "seleccionVisitanteId": 14,
+      "seleccionVisitante": "AUS",
+      "fechaHoraUtc": "2026-06-19T19:00:00Z",
+      "fechaHoraEt": "2026-06-19T15:00:00-04:00",
+      "sedeId": 16,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 30,
+      "numeroPartidoFifa": 30,
+      "fase": "GRUPOS",
+      "grupo": "C",
+      "seleccionLocalId": 12,
+      "seleccionLocal": "SCO",
+      "seleccionVisitanteId": 10,
+      "seleccionVisitante": "MAR",
+      "fechaHoraUtc": "2026-06-19T22:00:00Z",
+      "fechaHoraEt": "2026-06-19T18:00:00-04:00",
+      "sedeId": 11,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 31,
+      "numeroPartidoFifa": 31,
+      "fase": "GRUPOS",
+      "grupo": "C",
+      "seleccionLocalId": 9,
+      "seleccionLocal": "BRA",
+      "seleccionVisitanteId": 11,
+      "seleccionVisitante": "HAI",
+      "fechaHoraUtc": "2026-06-20T00:30:00Z",
+      "fechaHoraEt": "2026-06-19T20:30:00-04:00",
+      "sedeId": 12,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 32,
+      "numeroPartidoFifa": 32,
+      "fase": "GRUPOS",
+      "grupo": "D",
+      "seleccionLocalId": 16,
+      "seleccionLocal": "TUR",
+      "seleccionVisitanteId": 15,
+      "seleccionVisitante": "PAR",
+      "fechaHoraUtc": "2026-06-20T03:00:00Z",
+      "fechaHoraEt": "2026-06-19T23:00:00-04:00",
+      "sedeId": 15,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 33,
+      "numeroPartidoFifa": 33,
+      "fase": "GRUPOS",
+      "grupo": "F",
+      "seleccionLocalId": 21,
+      "seleccionLocal": "NED",
+      "seleccionVisitanteId": 24,
+      "seleccionVisitante": "SWE",
+      "fechaHoraUtc": "2026-06-20T17:00:00Z",
+      "fechaHoraEt": "2026-06-20T13:00:00-04:00",
+      "sedeId": 10,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 34,
+      "numeroPartidoFifa": 34,
+      "fase": "GRUPOS",
+      "grupo": "E",
+      "seleccionLocalId": 17,
+      "seleccionLocal": "GER",
+      "seleccionVisitanteId": 19,
+      "seleccionVisitante": "CIV",
+      "fechaHoraUtc": "2026-06-20T20:00:00Z",
+      "fechaHoraEt": "2026-06-20T16:00:00-04:00",
+      "sedeId": 4,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 35,
+      "numeroPartidoFifa": 35,
+      "fase": "GRUPOS",
+      "grupo": "E",
+      "seleccionLocalId": 18,
+      "seleccionLocal": "ECU",
+      "seleccionVisitanteId": 20,
+      "seleccionVisitante": "CUW",
+      "fechaHoraUtc": "2026-06-21T00:00:00Z",
+      "fechaHoraEt": "2026-06-20T20:00:00-04:00",
+      "sedeId": 14,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 36,
+      "numeroPartidoFifa": 36,
+      "fase": "GRUPOS",
+      "grupo": "F",
+      "seleccionLocalId": 23,
+      "seleccionLocal": "TUN",
+      "seleccionVisitanteId": 22,
+      "seleccionVisitante": "JPN",
+      "fechaHoraUtc": "2026-06-21T04:00:00Z",
+      "fechaHoraEt": "2026-06-21T00:00:00-04:00",
+      "sedeId": 3,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 37,
+      "numeroPartidoFifa": 37,
+      "fase": "GRUPOS",
+      "grupo": "H",
+      "seleccionLocalId": 29,
+      "seleccionLocal": "ESP",
+      "seleccionVisitanteId": 31,
+      "seleccionVisitante": "KSA",
+      "fechaHoraUtc": "2026-06-21T16:00:00Z",
+      "fechaHoraEt": "2026-06-21T12:00:00-04:00",
+      "sedeId": 9,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 38,
+      "numeroPartidoFifa": 38,
+      "fase": "GRUPOS",
+      "grupo": "G",
+      "seleccionLocalId": 25,
+      "seleccionLocal": "BEL",
+      "seleccionVisitanteId": 26,
+      "seleccionVisitante": "IRN",
+      "fechaHoraUtc": "2026-06-21T19:00:00Z",
+      "fechaHoraEt": "2026-06-21T15:00:00-04:00",
+      "sedeId": 7,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 39,
+      "numeroPartidoFifa": 39,
+      "fase": "GRUPOS",
+      "grupo": "H",
+      "seleccionLocalId": 30,
+      "seleccionLocal": "URU",
+      "seleccionVisitanteId": 32,
+      "seleccionVisitante": "CPV",
+      "fechaHoraUtc": "2026-06-21T22:00:00Z",
+      "fechaHoraEt": "2026-06-21T18:00:00-04:00",
+      "sedeId": 13,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 40,
+      "numeroPartidoFifa": 40,
+      "fase": "GRUPOS",
+      "grupo": "G",
+      "seleccionLocalId": 28,
+      "seleccionLocal": "NZL",
+      "seleccionVisitanteId": 27,
+      "seleccionVisitante": "EGY",
+      "fechaHoraUtc": "2026-06-22T01:00:00Z",
+      "fechaHoraEt": "2026-06-21T21:00:00-04:00",
+      "sedeId": 5,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 41,
+      "numeroPartidoFifa": 41,
+      "fase": "GRUPOS",
+      "grupo": "J",
+      "seleccionLocalId": 37,
+      "seleccionLocal": "ARG",
+      "seleccionVisitanteId": 38,
+      "seleccionVisitante": "AUT",
+      "fechaHoraUtc": "2026-06-22T17:00:00Z",
+      "fechaHoraEt": "2026-06-22T13:00:00-04:00",
+      "sedeId": 8,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 42,
+      "numeroPartidoFifa": 42,
+      "fase": "GRUPOS",
+      "grupo": "I",
+      "seleccionLocalId": 33,
+      "seleccionLocal": "FRA",
+      "seleccionVisitanteId": 36,
+      "seleccionVisitante": "IRQ",
+      "fechaHoraUtc": "2026-06-22T21:00:00Z",
+      "fechaHoraEt": "2026-06-22T17:00:00-04:00",
+      "sedeId": 12,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 43,
+      "numeroPartidoFifa": 43,
+      "fase": "GRUPOS",
+      "grupo": "I",
+      "seleccionLocalId": 35,
+      "seleccionLocal": "NOR",
+      "seleccionVisitanteId": 34,
+      "seleccionVisitante": "SEN",
+      "fechaHoraUtc": "2026-06-23T00:00:00Z",
+      "fechaHoraEt": "2026-06-22T20:00:00-04:00",
+      "sedeId": 6,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 44,
+      "numeroPartidoFifa": 44,
+      "fase": "GRUPOS",
+      "grupo": "J",
+      "seleccionLocalId": 40,
+      "seleccionLocal": "JOR",
+      "seleccionVisitanteId": 39,
+      "seleccionVisitante": "ALG",
+      "fechaHoraUtc": "2026-06-23T03:00:00Z",
+      "fechaHoraEt": "2026-06-22T23:00:00-04:00",
+      "sedeId": 15,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 45,
+      "numeroPartidoFifa": 45,
+      "fase": "GRUPOS",
+      "grupo": "K",
+      "seleccionLocalId": 41,
+      "seleccionLocal": "POR",
+      "seleccionVisitanteId": 43,
+      "seleccionVisitante": "UZB",
+      "fechaHoraUtc": "2026-06-23T17:00:00Z",
+      "fechaHoraEt": "2026-06-23T13:00:00-04:00",
+      "sedeId": 10,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 46,
+      "numeroPartidoFifa": 46,
+      "fase": "GRUPOS",
+      "grupo": "L",
+      "seleccionLocalId": 45,
+      "seleccionLocal": "ENG",
+      "seleccionVisitanteId": 48,
+      "seleccionVisitante": "GHA",
+      "fechaHoraUtc": "2026-06-23T20:00:00Z",
+      "fechaHoraEt": "2026-06-23T16:00:00-04:00",
+      "sedeId": 11,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 47,
+      "numeroPartidoFifa": 47,
+      "fase": "GRUPOS",
+      "grupo": "L",
+      "seleccionLocalId": 47,
+      "seleccionLocal": "PAN",
+      "seleccionVisitanteId": 46,
+      "seleccionVisitante": "CRO",
+      "fechaHoraUtc": "2026-06-23T23:00:00Z",
+      "fechaHoraEt": "2026-06-23T19:00:00-04:00",
+      "sedeId": 4,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 48,
+      "numeroPartidoFifa": 48,
+      "fase": "GRUPOS",
+      "grupo": "K",
+      "seleccionLocalId": 42,
+      "seleccionLocal": "COL",
+      "seleccionVisitanteId": 44,
+      "seleccionVisitante": "COD",
+      "fechaHoraUtc": "2026-06-24T02:00:00Z",
+      "fechaHoraEt": "2026-06-23T22:00:00-04:00",
+      "sedeId": 2,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 49,
+      "numeroPartidoFifa": 49,
+      "fase": "GRUPOS",
+      "grupo": "B",
+      "seleccionLocalId": 8,
+      "seleccionLocal": "SUI",
+      "seleccionVisitanteId": 5,
+      "seleccionVisitante": "CAN",
+      "fechaHoraUtc": "2026-06-24T19:00:00Z",
+      "fechaHoraEt": "2026-06-24T15:00:00-04:00",
+      "sedeId": 5,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 50,
+      "numeroPartidoFifa": 50,
+      "fase": "GRUPOS",
+      "grupo": "B",
+      "seleccionLocalId": 6,
+      "seleccionLocal": "BIH",
+      "seleccionVisitanteId": 7,
+      "seleccionVisitante": "QAT",
+      "fechaHoraUtc": "2026-06-24T19:00:00Z",
+      "fechaHoraEt": "2026-06-24T15:00:00-04:00",
+      "sedeId": 16,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 51,
+      "numeroPartidoFifa": 51,
+      "fase": "GRUPOS",
+      "grupo": "C",
+      "seleccionLocalId": 12,
+      "seleccionLocal": "SCO",
+      "seleccionVisitanteId": 9,
+      "seleccionVisitante": "BRA",
+      "fechaHoraUtc": "2026-06-24T22:00:00Z",
+      "fechaHoraEt": "2026-06-24T18:00:00-04:00",
+      "sedeId": 13,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 52,
+      "numeroPartidoFifa": 52,
+      "fase": "GRUPOS",
+      "grupo": "C",
+      "seleccionLocalId": 10,
+      "seleccionLocal": "MAR",
+      "seleccionVisitanteId": 11,
+      "seleccionVisitante": "HAI",
+      "fechaHoraUtc": "2026-06-24T22:00:00Z",
+      "fechaHoraEt": "2026-06-24T18:00:00-04:00",
+      "sedeId": 9,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 53,
+      "numeroPartidoFifa": 53,
+      "fase": "GRUPOS",
+      "grupo": "A",
+      "seleccionLocalId": 4,
+      "seleccionLocal": "CZE",
+      "seleccionVisitanteId": 1,
+      "seleccionVisitante": "MEX",
+      "fechaHoraUtc": "2026-06-25T01:00:00Z",
+      "fechaHoraEt": "2026-06-24T21:00:00-04:00",
+      "sedeId": 1,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 54,
+      "numeroPartidoFifa": 54,
+      "fase": "GRUPOS",
+      "grupo": "A",
+      "seleccionLocalId": 3,
+      "seleccionLocal": "RSA",
+      "seleccionVisitanteId": 2,
+      "seleccionVisitante": "KOR",
+      "fechaHoraUtc": "2026-06-25T01:00:00Z",
+      "fechaHoraEt": "2026-06-24T21:00:00-04:00",
+      "sedeId": 3,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 55,
+      "numeroPartidoFifa": 55,
+      "fase": "GRUPOS",
+      "grupo": "E",
+      "seleccionLocalId": 20,
+      "seleccionLocal": "CUW",
+      "seleccionVisitanteId": 19,
+      "seleccionVisitante": "CIV",
+      "fechaHoraUtc": "2026-06-25T20:00:00Z",
+      "fechaHoraEt": "2026-06-25T16:00:00-04:00",
+      "sedeId": 12,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 56,
+      "numeroPartidoFifa": 56,
+      "fase": "GRUPOS",
+      "grupo": "E",
+      "seleccionLocalId": 18,
+      "seleccionLocal": "ECU",
+      "seleccionVisitanteId": 17,
+      "seleccionVisitante": "GER",
+      "fechaHoraUtc": "2026-06-25T20:00:00Z",
+      "fechaHoraEt": "2026-06-25T16:00:00-04:00",
+      "sedeId": 6,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 57,
+      "numeroPartidoFifa": 57,
+      "fase": "GRUPOS",
+      "grupo": "F",
+      "seleccionLocalId": 22,
+      "seleccionLocal": "JPN",
+      "seleccionVisitanteId": 24,
+      "seleccionVisitante": "SWE",
+      "fechaHoraUtc": "2026-06-25T23:00:00Z",
+      "fechaHoraEt": "2026-06-25T19:00:00-04:00",
+      "sedeId": 8,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 58,
+      "numeroPartidoFifa": 58,
+      "fase": "GRUPOS",
+      "grupo": "F",
+      "seleccionLocalId": 23,
+      "seleccionLocal": "TUN",
+      "seleccionVisitanteId": 21,
+      "seleccionVisitante": "NED",
+      "fechaHoraUtc": "2026-06-25T23:00:00Z",
+      "fechaHoraEt": "2026-06-25T19:00:00-04:00",
+      "sedeId": 14,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 59,
+      "numeroPartidoFifa": 59,
+      "fase": "GRUPOS",
+      "grupo": "D",
+      "seleccionLocalId": 16,
+      "seleccionLocal": "TUR",
+      "seleccionVisitanteId": 13,
+      "seleccionVisitante": "USA",
+      "fechaHoraUtc": "2026-06-26T02:00:00Z",
+      "fechaHoraEt": "2026-06-25T22:00:00-04:00",
+      "sedeId": 7,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 60,
+      "numeroPartidoFifa": 60,
+      "fase": "GRUPOS",
+      "grupo": "D",
+      "seleccionLocalId": 15,
+      "seleccionLocal": "PAR",
+      "seleccionVisitanteId": 14,
+      "seleccionVisitante": "AUS",
+      "fechaHoraUtc": "2026-06-26T02:00:00Z",
+      "fechaHoraEt": "2026-06-25T22:00:00-04:00",
+      "sedeId": 15,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 61,
+      "numeroPartidoFifa": 61,
+      "fase": "GRUPOS",
+      "grupo": "I",
+      "seleccionLocalId": 35,
+      "seleccionLocal": "NOR",
+      "seleccionVisitanteId": 33,
+      "seleccionVisitante": "FRA",
+      "fechaHoraUtc": "2026-06-26T19:00:00Z",
+      "fechaHoraEt": "2026-06-26T15:00:00-04:00",
+      "sedeId": 11,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 62,
+      "numeroPartidoFifa": 62,
+      "fase": "GRUPOS",
+      "grupo": "I",
+      "seleccionLocalId": 34,
+      "seleccionLocal": "SEN",
+      "seleccionVisitanteId": 36,
+      "seleccionVisitante": "IRQ",
+      "fechaHoraUtc": "2026-06-26T19:00:00Z",
+      "fechaHoraEt": "2026-06-26T15:00:00-04:00",
+      "sedeId": 4,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 63,
+      "numeroPartidoFifa": 63,
+      "fase": "GRUPOS",
+      "grupo": "H",
+      "seleccionLocalId": 32,
+      "seleccionLocal": "CPV",
+      "seleccionVisitanteId": 31,
+      "seleccionVisitante": "KSA",
+      "fechaHoraUtc": "2026-06-27T00:00:00Z",
+      "fechaHoraEt": "2026-06-26T20:00:00-04:00",
+      "sedeId": 10,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 64,
+      "numeroPartidoFifa": 64,
+      "fase": "GRUPOS",
+      "grupo": "H",
+      "seleccionLocalId": 30,
+      "seleccionLocal": "URU",
+      "seleccionVisitanteId": 29,
+      "seleccionVisitante": "ESP",
+      "fechaHoraUtc": "2026-06-27T00:00:00Z",
+      "fechaHoraEt": "2026-06-26T20:00:00-04:00",
+      "sedeId": 2,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 65,
+      "numeroPartidoFifa": 65,
+      "fase": "GRUPOS",
+      "grupo": "G",
+      "seleccionLocalId": 27,
+      "seleccionLocal": "EGY",
+      "seleccionVisitanteId": 26,
+      "seleccionVisitante": "IRN",
+      "fechaHoraUtc": "2026-06-27T03:00:00Z",
+      "fechaHoraEt": "2026-06-26T23:00:00-04:00",
+      "sedeId": 16,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 66,
+      "numeroPartidoFifa": 66,
+      "fase": "GRUPOS",
+      "grupo": "G",
+      "seleccionLocalId": 28,
+      "seleccionLocal": "NZL",
+      "seleccionVisitanteId": 25,
+      "seleccionVisitante": "BEL",
+      "fechaHoraUtc": "2026-06-27T03:00:00Z",
+      "fechaHoraEt": "2026-06-26T23:00:00-04:00",
+      "sedeId": 5,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 67,
+      "numeroPartidoFifa": 67,
+      "fase": "GRUPOS",
+      "grupo": "L",
+      "seleccionLocalId": 47,
+      "seleccionLocal": "PAN",
+      "seleccionVisitanteId": 45,
+      "seleccionVisitante": "ENG",
+      "fechaHoraUtc": "2026-06-27T21:00:00Z",
+      "fechaHoraEt": "2026-06-27T17:00:00-04:00",
+      "sedeId": 6,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 68,
+      "numeroPartidoFifa": 68,
+      "fase": "GRUPOS",
+      "grupo": "L",
+      "seleccionLocalId": 46,
+      "seleccionLocal": "CRO",
+      "seleccionVisitanteId": 48,
+      "seleccionVisitante": "GHA",
+      "fechaHoraUtc": "2026-06-27T21:00:00Z",
+      "fechaHoraEt": "2026-06-27T17:00:00-04:00",
+      "sedeId": 12,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 69,
+      "numeroPartidoFifa": 69,
+      "fase": "GRUPOS",
+      "grupo": "K",
+      "seleccionLocalId": 42,
+      "seleccionLocal": "COL",
+      "seleccionVisitanteId": 41,
+      "seleccionVisitante": "POR",
+      "fechaHoraUtc": "2026-06-27T23:30:00Z",
+      "fechaHoraEt": "2026-06-27T19:30:00-04:00",
+      "sedeId": 13,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 70,
+      "numeroPartidoFifa": 70,
+      "fase": "GRUPOS",
+      "grupo": "K",
+      "seleccionLocalId": 44,
+      "seleccionLocal": "COD",
+      "seleccionVisitanteId": 43,
+      "seleccionVisitante": "UZB",
+      "fechaHoraUtc": "2026-06-27T23:30:00Z",
+      "fechaHoraEt": "2026-06-27T19:30:00-04:00",
+      "sedeId": 9,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 71,
+      "numeroPartidoFifa": 71,
+      "fase": "GRUPOS",
+      "grupo": "J",
+      "seleccionLocalId": 39,
+      "seleccionLocal": "ALG",
+      "seleccionVisitanteId": 38,
+      "seleccionVisitante": "AUT",
+      "fechaHoraUtc": "2026-06-28T02:00:00Z",
+      "fechaHoraEt": "2026-06-27T22:00:00-04:00",
+      "sedeId": 14,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    },
+    {
+      "id": 72,
+      "numeroPartidoFifa": 72,
+      "fase": "GRUPOS",
+      "grupo": "J",
+      "seleccionLocalId": 40,
+      "seleccionLocal": "JOR",
+      "seleccionVisitanteId": 37,
+      "seleccionVisitante": "ARG",
+      "fechaHoraUtc": "2026-06-28T02:00:00Z",
+      "fechaHoraEt": "2026-06-27T22:00:00-04:00",
+      "sedeId": 8,
+      "estado": "PROGRAMADO",
+      "golesLocal": null,
+      "golesVisitante": null,
+      "cuotas": {
+        "local": null,
+        "empate": null,
+        "visitante": null
+      }
+    }
+  ]
+}

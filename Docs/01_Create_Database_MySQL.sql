@@ -1,6 +1,6 @@
 -- 1. Crear la base de datos
-CREATE DATABASE IF NOT EXISTS utn_golmundial_2026;
-USE utn_golmundial_2026;
+CREATE DATABASE IF NOT EXISTS Api_GolMundial;
+USE Api_GolMundial;
 
 -- 2. Crear las tablas base
 

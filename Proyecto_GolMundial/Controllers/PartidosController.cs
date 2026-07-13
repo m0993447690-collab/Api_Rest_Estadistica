@@ -33,6 +33,65 @@ namespace Proyecto_GolMundial.Controllers
                 .ToListAsync();
         }
 
+        // GET: api/Partidos/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Partido>> GetPartido(int id)
+        {
+            var partido = await _context.Partidos
+                .Include(p => p.EquipoLocal)
+                .Include(p => p.EquipoVisitante)
+                .Include(p => p.Sede)
+                .Include(p => p.Fase)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (partido == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(partido);
+        }
+
+        // POST: api/Partidos
+        [HttpPost]
+        [Authorize(Roles = "ADMINISTRADOR")]
+        public async Task<ActionResult<Partido>> PostPartido([FromBody] Partido partido)
+        {
+            if (partido == null) return BadRequest();
+            _context.Partidos.Add(partido);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetPartido), new { id = partido.Id }, partido);
+        }
+
+        // PUT: api/Partidos/5
+        [HttpPut("{id}")]
+        [Authorize(Roles = "ADMINISTRADOR")]
+        public async Task<IActionResult> PutPartido(int id, [FromBody] Partido partido)
+        {
+            if (id != partido.Id) return BadRequest();
+
+            _context.Entry(partido).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PartidoExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // PUT: api/Partidos/5/resultado
         [HttpPut("{id}/resultado")]
         [Authorize(Roles = "ADMINISTRADOR")]
@@ -65,6 +124,25 @@ namespace Proyecto_GolMundial.Controllers
             await _utnGolCoinClient.NotificarResultadoLiquidacion(partido.Id, resultadoOficial, cuota);
 
             return NoContent();
+        }
+
+        // DELETE: api/Partidos/5
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMINISTRADOR")]
+        public async Task<IActionResult> DeletePartido(int id)
+        {
+            var partido = await _context.Partidos.FindAsync(id);
+            if (partido == null) return NotFound();
+
+            _context.Partidos.Remove(partido);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool PartidoExists(int id)
+        {
+            return _context.Partidos.Any(e => e.Id == id);
         }
     }
 }

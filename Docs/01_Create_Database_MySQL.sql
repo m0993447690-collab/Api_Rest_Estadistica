@@ -102,3 +102,14 @@ CREATE TABLE IF NOT EXISTS auditoria (
     detalles TEXT,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
+
+-- Tabla de Calendario
+CREATE TABLE IF NOT EXISTS calendario (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    partido_id INT NOT NULL,
+    fecha_hora_local DATETIME NOT NULL,
+    zona_horaria VARCHAR(50) NOT NULL,
+    observaciones VARCHAR(255),
+    FOREIGN KEY (partido_id) REFERENCES partidos(id) ON DELETE CASCADE
+);
+

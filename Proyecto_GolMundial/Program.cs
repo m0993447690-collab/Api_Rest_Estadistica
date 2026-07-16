@@ -36,6 +36,53 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Seeding logic on startup
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    try
+    {
+        var context = services.GetRequiredService<EstadisticasDbContext>();
+        
+        string? seedFilePath = null;
+        var pathsToTry = new[]
+        {
+            Path.Combine(AppContext.BaseDirectory, "seed-utn-golmundial-2026.json"),
+            Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "Docs", "seed-utn-golmundial-2026.json"),
+            Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Docs", "seed-utn-golmundial-2026.json"),
+            Path.Combine(Directory.GetCurrentDirectory(), "Docs", "seed-utn-golmundial-2026.json"),
+            Path.Combine(Directory.GetCurrentDirectory(), "..", "Docs", "seed-utn-golmundial-2026.json"),
+            @"c:\Users\m0993\Desktop\Proyecto_GolMundial\Docs\seed-utn-golmundial-2026.json"
+        };
+        
+        foreach (var path in pathsToTry)
+        {
+            if (File.Exists(path))
+            {
+                seedFilePath = path;
+                break;
+            }
+        }
+        
+        if (seedFilePath != null)
+        {
+            logger.LogInformation("Found seed file at: {SeedFilePath}", seedFilePath);
+            await DbSeeder.SeedAsync(context, seedFilePath);
+            logger.LogInformation("Database seeding completed successfully.");
+        }
+        else
+        {
+            logger.LogWarning("Seed data file seed-utn-golmundial-2026.json not found in any checked paths.");
+        }
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

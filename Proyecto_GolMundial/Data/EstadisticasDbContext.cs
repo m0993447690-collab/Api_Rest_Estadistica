@@ -16,6 +16,7 @@ namespace Proyecto_GolMundial.Data
         public DbSet<Sede> Sedes { get; set; }
         public DbSet<Fase> Fases { get; set; }
         public DbSet<Partido> Partidos { get; set; }
+        public DbSet<Calendario> Calendarios { get; set; }
         public DbSet<Auditoria> AuditoriaRegistros { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

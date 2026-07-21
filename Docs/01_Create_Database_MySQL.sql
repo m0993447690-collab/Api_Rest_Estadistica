@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS selecciones (
     confederacion VARCHAR(50) NOT NULL,
     es_anfitrion BOOLEAN DEFAULT FALSE,
     clasificacion VARCHAR(150),
+    eliminado BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (grupo) REFERENCES grupos(codigo)
 );
 

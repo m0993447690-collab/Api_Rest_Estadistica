@@ -160,7 +160,24 @@ namespace Proyecto_GolMundial.Controllers
                 .ThenByDescending(p => p.GolesAFavor)
                 .ToList();
 
-            return Ok(posiciones);
+            var result = posiciones.Posiciones.Select((p, index) => new
+            {
+                puesto = index + 1,
+                seleccion = new { 
+                    id = p.EquipoId, 
+                    nombre = p.Nombre, 
+                    codigoFifa = selecciones.FirstOrDefault(s => s.Id == p.EquipoId)?.CodigoFifa ?? "" 
+                },
+                puntos = p.Puntos,
+                jugados = p.PartidosJugados,
+                ganados = p.PartidosGanados,
+                empatados = p.PartidosEmpatados,
+                perdidos = p.PartidosPerdidos,
+                golesFavor = p.GolesAFavor,
+                golesContra = p.GolesEnContra
+            }).ToList();
+
+            return Ok(result);
         }
 
         private bool GrupoExists(string codigo)

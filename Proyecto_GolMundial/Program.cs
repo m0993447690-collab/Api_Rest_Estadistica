@@ -5,6 +5,7 @@ using Proyecto_GolMundial.Data;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+    //builder.WebHost.UseUrls("http://0.0.0.0:5000");
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -29,6 +30,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 // HttpClient para el servicio UTNGolCoin
 builder.Services.AddHttpClient<Proyecto_GolMundial.Services.UtnGolCoinClient>();
+
+// 1. Agregar el servicio de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirRedLocal", policy =>
+    {
+        // Permite peticiones desde cualquier origen, con cualquier método y cabecera
+        policy.AllowAnyOrigin() 
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -90,7 +103,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
+
+// 2. Aplicar la política de CORS
+app.UseCors("PermitirRedLocal");
 
 app.UseAuthentication();
 app.UseAuthorization();

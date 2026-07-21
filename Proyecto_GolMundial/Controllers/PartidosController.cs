@@ -52,12 +52,36 @@ namespace Proyecto_GolMundial.Controllers
             return Ok(partido);
         }
 
+        // GET: api/Partidos/grupo/A
+        [HttpGet("grupo/{codigo}")]
+        public async Task<ActionResult<IEnumerable<Partido>>> GetPartidosPorGrupo(string codigo)
+        {
+            var partidos = await _context.Partidos
+                .Include(p => p.EquipoLocal)
+                .Include(p => p.EquipoVisitante)
+                .Include(p => p.Sede)
+                .Include(p => p.Fase)
+                .Where(p => p.GrupoCodigo == codigo)
+                .ToListAsync();
+
+            return Ok(partidos);
+        }
+
         // POST: api/Partidos
         [HttpPost]
         [Authorize(Roles = "ADMINISTRADOR")]
         public async Task<ActionResult<Partido>> PostPartido([FromBody] Partido partido)
         {
             if (partido == null) return BadRequest();
+
+            // Validación de equipos eliminados
+            var local = await _context.Selecciones.FindAsync(partido.EquipoLocalId);
+            var visitante = await _context.Selecciones.FindAsync(partido.EquipoVisitanteId);
+            if ((local != null && local.Eliminado) || (visitante != null && visitante.Eliminado))
+            {
+                return BadRequest("No se puede programar el partido porque uno de los equipos ya está eliminado del Mundial.");
+            }
+
             _context.Partidos.Add(partido);
             await _context.SaveChangesAsync();
 
@@ -70,6 +94,14 @@ namespace Proyecto_GolMundial.Controllers
         public async Task<IActionResult> PutPartido(int id, [FromBody] Partido partido)
         {
             if (id != partido.Id) return BadRequest();
+
+            // Validación de equipos eliminados
+            var local = await _context.Selecciones.FindAsync(partido.EquipoLocalId);
+            var visitante = await _context.Selecciones.FindAsync(partido.EquipoVisitanteId);
+            if ((local != null && local.Eliminado) || (visitante != null && visitante.Eliminado))
+            {
+                return BadRequest("No se puede actualizar el partido porque uno de los equipos ya está eliminado del Mundial.");
+            }
 
             _context.Entry(partido).State = EntityState.Modified;
 
@@ -118,6 +150,9 @@ namespace Proyecto_GolMundial.Controllers
             // En un caso real las cuotas pueden ser dinámicas. Aquí simulamos una básica.
             int cuota = 2; 
 
+            // Ejecutar la lógica de eliminación automática
+            await CalcularEliminacionAutomatica(partido);
+
             await _context.SaveChangesAsync();
 
             // Notificar a la API de UTNGolCoin (Java)
@@ -143,6 +178,58 @@ namespace Proyecto_GolMundial.Controllers
         private bool PartidoExists(int id)
         {
             return _context.Partidos.Any(e => e.Id == id);
+        }
+
+        private async Task CalcularEliminacionAutomatica(Partido partido)
+        {
+            // Solo procesar si el partido ha finalizado
+            if (partido.Estado != "FINALIZADO") return;
+
+            // Verificar la fase. Si es de grupos, calculamos todos.
+            if (partido.FaseCodigo.Contains("GRUPO", StringComparison.OrdinalIgnoreCase))
+            {
+                var partidosDelGrupo = await _context.Partidos
+                    .Where(p => p.GrupoCodigo == partido.GrupoCodigo)
+                    .ToListAsync();
+
+                // Revisar si ya se jugaron todos los partidos del grupo (normalmente 6)
+                if (partidosDelGrupo.Count > 0 && partidosDelGrupo.All(p => p.Estado == "FINALIZADO"))
+                {
+                    var equipos = await _context.Selecciones.Where(s => s.GrupoId == partido.GrupoCodigo).ToListAsync();
+                    
+                    var estadisticas = equipos.Select(e => new {
+                        Equipo = e,
+                        Puntos = partidosDelGrupo.Sum(p => 
+                            p.EquipoLocalId == e.Id ? (p.GolesLocal > p.GolesVisitante ? 3 : p.GolesLocal == p.GolesVisitante ? 1 : 0) :
+                            p.EquipoVisitanteId == e.Id ? (p.GolesVisitante > p.GolesLocal ? 3 : p.GolesVisitante == p.GolesLocal ? 1 : 0) : 0),
+                        DiferenciaGoles = partidosDelGrupo.Sum(p =>
+                            p.EquipoLocalId == e.Id ? (p.GolesLocal - p.GolesVisitante) :
+                            p.EquipoVisitanteId == e.Id ? (p.GolesVisitante - p.GolesLocal) : 0)
+                    }).OrderByDescending(x => x.Puntos).ThenByDescending(x => x.DiferenciaGoles).ToList();
+
+                    // El último lugar (4to) queda eliminado automáticamente.
+                    var ultimo = estadisticas.LastOrDefault();
+                    if (ultimo != null)
+                    {
+                        ultimo.Equipo.Eliminado = true;
+                        _context.Entry(ultimo.Equipo).State = EntityState.Modified;
+                    }
+                }
+            }
+            // Fases eliminatorias (Octavos, Cuartos, Final), excluyendo Tercer Lugar que lo juegan los que pierden en semis
+            else if (!partido.FaseCodigo.Contains("TERCER", StringComparison.OrdinalIgnoreCase))
+            {
+                if (partido.GolesLocal > partido.GolesVisitante)
+                {
+                    var visitante = await _context.Selecciones.FindAsync(partido.EquipoVisitanteId);
+                    if (visitante != null) { visitante.Eliminado = true; _context.Entry(visitante).State = EntityState.Modified; }
+                }
+                else if (partido.GolesVisitante > partido.GolesLocal)
+                {
+                    var local = await _context.Selecciones.FindAsync(partido.EquipoLocalId);
+                    if (local != null) { local.Eliminado = true; _context.Entry(local).State = EntityState.Modified; }
+                }
+            }
         }
     }
 }

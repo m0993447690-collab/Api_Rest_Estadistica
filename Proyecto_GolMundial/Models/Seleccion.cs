@@ -36,6 +36,9 @@ namespace Proyecto_GolMundial.Models
         [Column("clasificacion")]
         [StringLength(150)]
         public string? Clasificacion { get; set; }
+
+        [Column("eliminado")]
+        public bool Eliminado { get; set; } = false;
         
         [ForeignKey("GrupoId")]
         public Grupo? Grupo { get; set; }

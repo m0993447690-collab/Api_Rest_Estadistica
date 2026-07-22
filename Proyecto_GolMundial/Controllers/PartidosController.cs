@@ -186,7 +186,7 @@ namespace Proyecto_GolMundial.Controllers
             if (partido.Estado != "FINALIZADO") return;
 
             // Verificar la fase. Si es de grupos, calculamos todos.
-            if (partido.FaseCodigo.Contains("GRUPO", StringComparison.OrdinalIgnoreCase))
+            if (partido.FaseCodigo == "GRUPOS" || partido.FaseCodigo.Contains("GRUPO", StringComparison.OrdinalIgnoreCase))
             {
                 var partidosDelGrupo = await _context.Partidos
                     .Where(p => p.GrupoCodigo == partido.GrupoCodigo)

@@ -30,6 +30,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 // HttpClient para el servicio UTNGolCoin
 builder.Services.AddHttpClient<Proyecto_GolMundial.Services.UtnGolCoinClient>();
+builder.Services.AddHttpClient();
 
 // 1. Agregar el servicio de CORS
 builder.Services.AddCors(options =>

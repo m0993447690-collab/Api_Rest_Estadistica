@@ -16,11 +16,13 @@ namespace Proyecto_GolMundial.Controllers
     {
         private readonly EstadisticasDbContext _context;
         private readonly IConfiguration _configuration;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public AuthController(EstadisticasDbContext context, IConfiguration configuration)
+        public AuthController(EstadisticasDbContext context, IConfiguration configuration, IHttpClientFactory httpClientFactory)
         {
             _context = context;
             _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }
 
         [HttpPost("login")]
@@ -56,6 +58,31 @@ namespace Proyecto_GolMundial.Controllers
 
             _context.Usuarios.Add(newUser);
             await _context.SaveChangesAsync();
+
+            // Notificar al backend UTNGolCoin (Java) para crear la billetera con el bono de bienvenida (10 GC)
+            try
+            {
+                var client = _httpClientFactory.CreateClient();
+                // Forzar un int64 para que coincida con el Long de Java
+                var billeteraPayload = new { usuarioId = (long)newUser.Id };
+                var jsonContent = new StringContent(System.Text.Json.JsonSerializer.Serialize(billeteraPayload), Encoding.UTF8, "application/json");
+                
+                var response = await client.PostAsync("http://192.168.0.15:8080/utngolcoin-backend/api/billeteras", jsonContent);
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Error al crear billetera en Java: {response.StatusCode} - {errorResponse}");
+                    // Aunque falle la billetera, el usuario ya se creó. Podríamos retornar un warning.
+                }
+                else 
+                {
+                    Console.WriteLine($"Billetera creada exitosamente en Java para usuario: {newUser.Id}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Excepción al crear billetera en Java: {ex.Message}");
+            }
 
             var token = GenerateJwtToken(newUser);
             return Ok(new { token });

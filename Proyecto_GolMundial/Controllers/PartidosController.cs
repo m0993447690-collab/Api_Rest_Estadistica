@@ -52,6 +52,22 @@ namespace Proyecto_GolMundial.Controllers
             return Ok(partido);
         }
 
+        // NUEVO ENDPOINT PARA UTNGolCoin (Devuelve solo la fecha como string ISO)
+        // GET: api/Partidos/5/fecha
+        [HttpGet("{id}/fecha")]
+        public async Task<ActionResult<string>> GetPartidoFecha(int id)
+        {
+            var partido = await _context.Partidos.FindAsync(id);
+
+            if (partido == null)
+            {
+                return NotFound();
+            }
+
+            // Devuelve la fecha en el formato esperado por Java como texto plano
+            return Content(partido.FechaHoraUtc.ToString("s"), "text/plain");
+        }
+
         // GET: api/Partidos/grupo/A
         [HttpGet("grupo/{codigo}")]
         public async Task<ActionResult<IEnumerable<Partido>>> GetPartidosPorGrupo(string codigo)
@@ -107,6 +123,10 @@ namespace Proyecto_GolMundial.Controllers
 
             try
             {
+                if (partido.Estado == "FINALIZADO")
+                {
+                    await CalcularEliminacionAutomatica(partido);
+                }
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -185,49 +205,87 @@ namespace Proyecto_GolMundial.Controllers
             // Solo procesar si el partido ha finalizado
             if (partido.Estado != "FINALIZADO") return;
 
-            // Verificar la fase. Si es de grupos, calculamos todos.
-            if (partido.FaseCodigo == "GRUPOS" || partido.FaseCodigo.Contains("GRUPO", StringComparison.OrdinalIgnoreCase))
-            {
-                var partidosDelGrupo = await _context.Partidos
-                    .Where(p => p.GrupoCodigo == partido.GrupoCodigo)
-                    .ToListAsync();
+            bool esFaseGrupos = partido.FaseCodigo == "GRUPOS" || partido.FaseCodigo.Contains("GRUPO", StringComparison.OrdinalIgnoreCase);
 
-                // Revisar si ya se jugaron todos los partidos del grupo (normalmente 6)
-                if (partidosDelGrupo.Count > 0 && partidosDelGrupo.All(p => p.Estado == "FINALIZADO"))
+            if (esFaseGrupos)
+            {
+                var grupoCod = partido.GrupoCodigo;
+                if (string.IsNullOrEmpty(grupoCod) && partido.EquipoLocalId > 0)
                 {
-                    var equipos = await _context.Selecciones.Where(s => s.GrupoId == partido.GrupoCodigo).ToListAsync();
-                    
+                    var localEquipo = await _context.Selecciones.FindAsync(partido.EquipoLocalId);
+                    if (localEquipo != null) grupoCod = localEquipo.GrupoId;
+                }
+
+                if (!string.IsNullOrEmpty(grupoCod))
+                {
+                    var partidosDelGrupo = await _context.Partidos
+                        .Where(p => p.GrupoCodigo == grupoCod)
+                        .ToListAsync();
+
+                    var equipos = await _context.Selecciones.Where(s => s.GrupoId == grupoCod).ToListAsync();
+                    var partidosFinalizados = partidosDelGrupo.Where(p => p.Estado == "FINALIZADO").ToList();
+
                     var estadisticas = equipos.Select(e => new {
                         Equipo = e,
-                        Puntos = partidosDelGrupo.Sum(p => 
+                        PartidosJugados = partidosFinalizados.Count(p => p.EquipoLocalId == e.Id || p.EquipoVisitanteId == e.Id),
+                        Puntos = partidosFinalizados.Sum(p => 
                             p.EquipoLocalId == e.Id ? (p.GolesLocal > p.GolesVisitante ? 3 : p.GolesLocal == p.GolesVisitante ? 1 : 0) :
                             p.EquipoVisitanteId == e.Id ? (p.GolesVisitante > p.GolesLocal ? 3 : p.GolesVisitante == p.GolesLocal ? 1 : 0) : 0),
-                        DiferenciaGoles = partidosDelGrupo.Sum(p =>
-                            p.EquipoLocalId == e.Id ? (p.GolesLocal - p.GolesVisitante) :
-                            p.EquipoVisitanteId == e.Id ? (p.GolesVisitante - p.GolesLocal) : 0)
+                        DiferenciaGoles = partidosFinalizados.Sum(p =>
+                            p.EquipoLocalId == e.Id ? ((p.GolesLocal ?? 0) - (p.GolesVisitante ?? 0)) :
+                            p.EquipoVisitanteId == e.Id ? ((p.GolesVisitante ?? 0) - (p.GolesLocal ?? 0)) : 0)
                     }).OrderByDescending(x => x.Puntos).ThenByDescending(x => x.DiferenciaGoles).ToList();
 
-                    // El último lugar (4to) queda eliminado automáticamente.
-                    var ultimo = estadisticas.LastOrDefault();
-                    if (ultimo != null)
+                    bool todosFinalizados = partidosDelGrupo.Count > 0 && partidosDelGrupo.All(p => p.Estado == "FINALIZADO");
+
+                    if (todosFinalizados)
                     {
-                        ultimo.Equipo.Eliminado = true;
-                        _context.Entry(ultimo.Equipo).State = EntityState.Modified;
+                        // En fase de grupos califican los 2 primeros. El 3er y 4to quedan eliminados.
+                        var eliminados = estadisticas.Skip(2).Select(x => x.Equipo).ToList();
+                        foreach (var eq in eliminados)
+                        {
+                            eq.Eliminado = true;
+                            _context.Entry(eq).State = EntityState.Modified;
+                        }
+                    }
+                    else
+                    {
+                        // Si un equipo ya jugó todos sus partidos de grupo (>= 3) y quedó en posición 3 o 4
+                        foreach (var item in estadisticas)
+                        {
+                            if (item.PartidosJugados >= 3)
+                            {
+                                int pos = estadisticas.FindIndex(x => x.Equipo.Id == item.Equipo.Id);
+                                if (pos >= 2)
+                                {
+                                    item.Equipo.Eliminado = true;
+                                    _context.Entry(item.Equipo).State = EntityState.Modified;
+                                }
+                            }
+                        }
                     }
                 }
             }
-            // Fases eliminatorias (Octavos, Cuartos, Final), excluyendo Tercer Lugar que lo juegan los que pierden en semis
+            // Fases eliminatorias directas (Octavos, Cuartos, Semifinal, Final, Dieciseisavos, etc.)
             else if (!partido.FaseCodigo.Contains("TERCER", StringComparison.OrdinalIgnoreCase))
             {
                 if (partido.GolesLocal > partido.GolesVisitante)
                 {
                     var visitante = await _context.Selecciones.FindAsync(partido.EquipoVisitanteId);
-                    if (visitante != null) { visitante.Eliminado = true; _context.Entry(visitante).State = EntityState.Modified; }
+                    if (visitante != null)
+                    {
+                        visitante.Eliminado = true;
+                        _context.Entry(visitante).State = EntityState.Modified;
+                    }
                 }
                 else if (partido.GolesVisitante > partido.GolesLocal)
                 {
                     var local = await _context.Selecciones.FindAsync(partido.EquipoLocalId);
-                    if (local != null) { local.Eliminado = true; _context.Entry(local).State = EntityState.Modified; }
+                    if (local != null)
+                    {
+                        local.Eliminado = true;
+                        _context.Entry(local).State = EntityState.Modified;
+                    }
                 }
             }
         }
